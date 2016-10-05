@@ -1,0 +1,339 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "flexbox";
+@import "colors";
+@import "typography";
+
+html, body {
+	font-size: 10px;
+	height: 100vh;
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+	-webkit-text-size-adjust: 100%;
+	background-color: $Grey-4-light;
+	// background-color: transparent;
+}
+
+.active {
+	background-color: #ddd;
+	border-radius: 5px;
+}
+
+.red {
+	background-color: $Jaguar-Red;
+}
+
+.blue {
+	background-color: $Blue;
+}
+
+.orange {
+	background-color: $Orange;
+}
+
+.hidden {
+	display: none;
+}
+
+.loading {
+	display: none;
+}
+
+.small {
+	font-size: 1.25rem;
+	padding: 0.5rem;
+	border-radius: 5px;
+	background-color: rgba($Blue, 0.5);
+}
+
+.italic {
+	font-style: italic;
+}
+
+a {
+	text-decoration: none;
+}
+
+ol {
+	counter-reset: li; /* Initiate a counter */
+	list-style: none; /* Remove default numbering */
+	padding: 0;
+	margin-bottom: 4em;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	@include box-sizing(border-box);
+	> li {
+		box-sizing: border-box;
+		padding-left: 1rem;
+		&:hover {
+			cursor: pointer;
+		}
+		> p {
+			position: relative;
+			display: block;
+			padding: .4em .4em .4em 6rem;
+			margin: 0.5em 0;
+			background: #ddd;
+			color: #444;
+			@include border-radius(.3em);
+			transition: all .3s ease-out;
+			@include box-sizing(border-box);
+			&:hover {
+				background: #aaa;
+			}
+			&:before {
+				content: counter(li);
+				counter-increment: li;
+				position: absolute;
+				left: -0.75rem;
+				top: 50%;
+				margin-top: -1.3em;
+				background: $Blue;
+				height: 2em;
+				width: 2em;
+				line-height: 2;
+				border: .3em solid #fff;
+				text-align: center;
+				font-weight: bold;
+				@include border-radius(2em);
+				transition: all .3s ease-out;
+			}
+		}
+		> ol {
+			margin: 0 0 0 2rem; /* add some left margin for inner lists */
+		}
+	}
+}
+
+body {
+	-webkit-text-size-adjust: auto;
+	font-family: SourceSansProLight;
+	color: $Grey-Black;
+	@extend %flexbox;
+	@extend %flexColumn;
+	@extend %verticalFill;
+	@include box-sizing(border-box);
+	header {
+		@include box-sizing(border-box);
+		@include flex(2);
+		text-align: center;
+	}
+	#app-nav {
+		min-height: 5rem;
+		button:first-of-type {
+			@include flex(5);
+			text-align: left;
+			padding-left: 1rem;
+		}
+	}
+	.info-nav {
+		margin-bottom: 1rem;
+	}
+	.mapButton {
+		
+	}
+	nav {
+		@include box-sizing(border-box);
+		@extend %flexbox;
+		@extend %flexRow;
+		@extend %spaceAround;
+		@extend %verticalFill;
+		@include flex(1);
+		background-color: #f1f1f0;
+		button {
+			@include flex(1);
+			margin: 0;
+			padding: 0;
+			border: none;
+			outline: none;
+			min-height: 5rem;
+			font-size: 1.5rem;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		#home:hover {
+			cursor: default;
+		}
+	}
+	main {
+		@include box-sizing(border-box);
+		@include flex(20);
+		@extend %flexbox;
+		@extend %flexRow;
+		@extend %verticalFill;
+		@extend %spaceAround;
+		z-index: 50;
+		.hidden {
+			display: none;
+		}
+		.container {
+			@extend %flexbox;
+			@extend %verticalFill;
+			@include flex(auto);
+			@include box-sizing(border-box);
+			padding: 2rem;
+		}
+		#map-container {
+			padding: 0;
+		}
+		#map {
+			flex: auto;
+		}
+		#user-interaction {
+			display: none;
+		}
+		article {
+			@extend %flexbox;
+			@extend %flexColumn;
+			@extend %verticalFill;
+			@include flex(auto);
+			@include box-sizing(border-box);
+			background-color: $Grey-4-light;
+			margin-bottom: 1rem;
+			overflow-y: auto;
+			header {
+				@include flex(1);
+				@extend %flexbox;
+				@extend %flexRow;
+				@extend %verticalFill;
+				@extend %spaceBetween;
+				h1 {
+					text-align: right;
+					@include flex(2);
+				}
+				div {
+					@include flex(1);
+				}
+			}
+			section {
+				@extend %flexbox;
+				@extend %flexColumn;
+				@extend %verticalFill;
+				@extend %spaceAround;
+				@include flex(8);
+				@include box-sizing(border-box);
+				ol {
+					flex: auto;
+				}
+				.details-container {
+					@include flex(8);
+					@extend %flexbox;
+					@extend %flexColumn;
+					@extend %verticalFill;
+					margin-right: 2rem;
+					.details-header {
+						@include flex(1);
+						@extend %flexbox;
+						@extend %flexRow;
+						@extend %verticalFill;
+						@extend %spaceBetween;
+						.details-name {
+							@include flex(2);
+							text-align: right;
+						}
+					}
+					.details-details {
+						@include flex(8);
+						overflow-y: auto;
+					}
+					.details-footer {
+						@include box-sizing(border-box);
+						@include flex(2);
+						padding: 2rem;
+						background-color: rgba(55, 55, 55, 0.5);
+					}
+				}
+				aside {
+					@include border-radius(7px);
+					@include flex(2);
+					@include box-sizing(border-box);
+					background-color: #aaa;
+					padding: 2rem;
+				}
+			}
+		}
+		form {
+			max-width: 900px;
+			margin: 0 auto;
+			fieldset {
+				margin-bottom: 4rem;
+				@include border-radius(10px);
+				@include box-sizing(border-box);
+				border: 2px inset rgba(55, 55, 55, 0.05);
+				padding: 1rem;
+				&:last-of-type {
+					border: none;
+				}
+				ul {
+					li {
+						display: flex;
+						justify-content: center;
+						@include box-sizing(border-box);
+						color: #333;
+						font: 400 1.5rem SourceSansPro, sans-serif;
+						padding: 1rem 0;
+						label {
+							flex: none;
+							margin-right: 1rem;
+						}
+						select {
+							flex: none;
+							max-width: 200px;
+							margin-left: 1rem;
+						}
+						button {
+							&:first-of-type {
+								margin-right: 1rem;
+							}
+							&:last-of-type {
+								margin-left: 1rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.loader {
+	margin: 50px auto 10px;
+	width: 300px;
+	height: 25px;
+	border-radius: 14px;
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #999;
+	background: #ccc;
+	overflow: hidden;
+	position: relative;
+	.progress-bar {
+		height: inherit;
+		width: 20%;
+		border-radius: inherit;
+		position: relative;
+		overflow: hidden;
+		background: #3498db;
+		.progress-stripes {
+			width: inherit;
+			height: inherit;
+			font-size: 18rem;
+			font-weight: bold;
+			margin-top: -5rem;
+			letter-spacing: -14px;
+			color: #2980b9;
+		}
+		.percentage {
+			position: absolute;
+			top: 4px;
+			right: 5px;
+			font-weight: bold;
+			font-size: 16px;
+			color: #eee;
+		}
+	}
+}
+
+/**
+ * TODO: make an earthquake magnitude spinner gif
+ */

@@ -1,0 +1,160 @@
+// my previous colors
+$color: 'black';
+$app-bg-color: rgba(232, 232, 232, 1);
+$app-text-color: rgba(40, 40, 40, 0.5);
+$app-text-shadow: 0px -1px 0px #5C5C58;
+
+// JLR colors
+
+$Grey-Black: #262a27;
+$Jaguar-Red: #9e1b32;
+$Land-Rover-Green: #005a2b;
+$Grey-1: #4c5154;
+$Grey-2: #808588;
+$Grey-3: #919b9d;
+$Grey-3-light: #e3e6e6;
+$Grey-4: #c6c7c3;
+$Grey-4-light: #f1f1f0;
+$Blue: #00A5D8;
+$Orange: #ff6808;
+
+$Hyperlink: rgb(79, 92, 214);
+
+$orange-lt: #ffd38c;
+
+$orange-viv: #fe9c00;
+
+$blue-lt: #b2f0ff;
+
+$blue-viv: #53b5ce;
+
+$yellow-lt: #ffffb2;
+
+$yellow-viv: #ffff00;
+
+$green-lt: #cdffb2;
+
+$green-viv: #59ff00;
+
+$grey: #c4c4c4;
+
+$white: #FFF;
+
+$black: #000;
+
+$modal: rgba(0,0,0,0.8);
+
+$settings: rgba(0,0,0,0.8);
+
+$overlay: rgba(0,0,0,0.8);
+
+.jlr-grey-black {
+	background-color: $Grey-Black;
+}
+
+.jaguar-red {
+	background-color: $Jaguar-Red;
+}
+
+.land-rover-green {
+	background-color: $Land-Rover-Green;
+}
+
+.grey-1 {
+	background-color: $Grey-1;
+}
+
+.grey-2 {
+	background-color: $Grey-2;
+}
+
+.grey-3 {
+	background-color: $Grey-3;
+}
+
+.grey-3-light {
+	background-color: $Grey-3-light;
+}
+
+.grey-4 {
+	background-color: $Grey-4;
+}
+
+.grey-4-light {
+	background-color: $Grey-4-light;
+}
+
+.jlr-blue {
+	background-color: $Blue;
+}
+
+.jlr-orange {
+	background-color: $Orange;
+}
+
+.hyperlink {
+	background-color: $Hyperlink;
+}
+
+.flex-parent {
+	@extend %flexRowWrap;
+	@extend %spaceBetween;
+	max-width: 50vw;
+	> .colors {
+		flex: 0 0 100px;
+		height: 100px;
+		margin: 10px;
+	}
+}
+
+.orange-lt-bg {
+	background-color: $orange-lt;
+}
+
+.orange-viv-bg {
+	background-color: $orange-viv;
+}
+
+.blue-lt-bg {
+	background-color: $blue-lt;
+}
+
+.blue-viv-bg {
+	background-color: $blue-viv;
+}
+
+.yellow-lt-bg {
+	background-color: $yellow-lt;
+}
+
+.yellow-viv-bg {
+	background-color: $yellow-viv;
+}
+
+.green-lt-bg {
+	background-color: $green-lt;
+}
+
+.green-viv-bg {
+	background-color: $green-viv;
+}
+
+.white {
+	color: $white;
+}
+
+.white-bg {
+	background-color: $white;
+}
+
+.grey-bg {
+	background-color: $grey;
+}
+
+.black-bg {
+	background-color: #000;
+}
+
+.overlay-bg {
+	background-color: rgba(0, 0, 0, 0.8);
+}

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="author" content="@mattbontrager">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0 user-scalable=no" />
+		<meta name="description" content="View current and historical earthquakes color-coded and mapped out for you on an interactive map." />
+		<meta name="twitter:card" content="product">
+		<meta name="twitter:site" content="@EarthquakeTrckr">
+		<meta name="twitter:description" content="View current and historical earthquakes color-coded and mapped out for you on an interactive map.">
+		<meta name="twitter:creator" content="@mattbontrager">
+		<meta name="twitter:title" content="Earthquake Tracker HTML5 Web App">
+		<meta name="twitter:image" content="http://earthquake-tracker.com/site/css/images/app_icon_250.png">
+		<meta name="twitter:image:width" content="250px">
+		<meta name="twitter:image:height" content="250px">
+		<title>Earthquake Tracker</title>
+
+		<!-- WebApp Icons -->
+			<!-- iPad -->
+			<link href="webapp-assets/apple-touch-icon-precomposed-72x72.png" sizes="72x72" rel="apple-touch-icon-precomposed" />
+
+			<!-- iPad (Retina) -->
+			<link href="webapp-assets/apple-touch-icon-precomposed-144x144.png" sizes="144x144" rel="apple-touch-icon-precomposed" />
+
+			<!-- iPhone -->
+			<link href="webapp-assets/apple-touch-icon-precomposed-57x57.png" sizes="57x57" rel="apple-touch-icon-precomposed" />
+
+			<!-- iPhone (Retina) -->
+			<link href="webapp-assets/apple-touch-icon-precomposed-114x114.png" sizes="114x114" rel="apple-touch-icon-precomposed" />
+		<!-- End WebApp Icons -->
+
+		<!-- leaflet js -->
+		<script src="js/leaflet.js"></script>
+
+		<!-- leaflet css -->
+		<link rel="stylesheet" href="css/leaflet.css">
+
+		<!-- app css -->
+		<link rel="stylesheet" href="css/screen.css">
+	</head>
+	<body>
+		<nav id="app-nav" class="app-nav">
+			<button id="home" data-method="reveal" data-id="map">EQT</button>
+			<!-- TODO: add globe icon for map -->
+			<button data-method="reveal" class="mapButton" data-id="map-container">Map</button>
+			<!-- TODO: add info icon-->
+			<button id="info" data-method="reveal" data-id="info-container">Info</button>
+			<!-- TODO: add gear icon for settings -->
+			<button data-method="reveal" data-id="settings-container">Settings</button>
+		</nav>
+		<main>
+			<!-- BEGIN MAP -->
+			<div id="map-container" class="app container">
+				<!-- <div class="loading"></div> -->
+				<!-- <div id="infobox" class="infobox"></div> -->
+				<div id="map"></div>
+			</div>
+			<!-- END MAP -->
+
+			<!-- BEGIN INFO -->
+			<div id="info-container" class="articles container hidden">
+				<nav class="info-nav">
+					<button data-method="reveal" class="active" data-id="before">Before</button>
+					<button data-method="reveal" data-id="during">During</button>
+					<button data-method="reveal" data-id="after">After</button>
+					<button data-method="reveal" data-id="more-info">More Info</button>
+				</nav>
+				<article id="before">
+					<h3>Before An Earthquake</h3>
+					<p><em>The following are things you can do to protect yourself, your family and your property in the event of an earthquake.</em></p>
+					<section>
+						<ol class="helpList">
+							<li><p>To begin preparing, you should <a href="http://www.ready.gov/build-a-kit" target="_blank">build an emergency kit</a> and <a href="http://www.ready.gov/make-a-plan" target="_blank">make a family communications plan</a>.</p></li>
+							<li><p>Fasten shelves securely to walls.</p></li>
+							<li><p>Place large or heavy objects on lower shelves.</p></li>
+							<li><p>Store breakable items such as bottled foods, glass, and china in low, closed cabinets with latches.</p></li>
+							<li><p>Fasten heavy items such as pictures and mirrors securely to walls and away from beds, couches and anywhere people sit.</p></li>
+							<li><p>Brace overhead light fixtures and top heavy objects.</p></li>
+							<li><p>Repair defective electrical wiring and leaky gas connections. These are potential fire risks. Get appropriate professional help. Do not work with gas or electrical lines yourself.</p></li>
+							<li><p>Install flexible pipe fittings to avoid gas or water leaks. Flexible fittings are more resistant to breakage.</p></li>
+							<li><p>Secure your water heater, refrigerator, furnace and gas appliances by strapping them to the wall studs and bolting to the floor. If recommended by your gas company, have an automatic gas shut-off valve installed that is triggered by strong vibrations.</p></li>
+							<li><p>Repair any deep cracks in ceilings or foundations. Get expert advice if there are signs of structural defects.</p></li>
+							<li><p>Be sure the residence is firmly anchored to its foundation.</p></li>
+							<li><p>Store weed killers, pesticides, and flammable products securely in closed cabinets with latches and on bottom shelves.</p></li>
+							<li><p>Locate safe spots in each room under a sturdy table or against an inside wall. Reinforce this information by moving to these places during each drill.</p></li>
+							<li><p>Hold earthquake drills with your family members: Drop, cover and hold on.</p></li>
+						</ol>
+					</section>
+				</article>
+				<article id="during" class="hidden">
+					<h3>During An Earthquake</h3>
+					<p>Drop, cover and Hold On. Minimize your movements to a few steps to a nearby safe place and if you are indoors, stay there until the shaking has stopped and you are sure exiting is safe.</p>
+					<section id="indoors">
+						<h4>If Indoors</h4>
+						<ol class="helpList indoors">
+							<li><p>DROP to the ground; take COVER by getting under a sturdy table or other piece of furniture; and HOLD ON until the shaking stops. If there isn’t a table or desk near you, cover your face and head with your arms and crouch in an inside corner of the building.</p></li>
+							<li><p>Stay away from glass, windows, outside doors and walls, and anything that could fall, such as lighting fixtures or furniture.</p></li>
+							<li><p>Stay in bed if you are there when the earthquake strikes. Hold on and protect your head with a pillow, unless you are under a heavy light fixture that could fall. In that case, move to the nearest safe place.</p></li>
+							<li><p>Do not use a doorway except if you know it is a strongly supported, load-bearing doorway and it is close to you. Many inside doorways are lightly constructed and do not offer protection.</p></li>
+							<li><p>Stay inside until the shaking stops and it is safe to go outside. Do not exit a building during the shaking. Research has shown that most injuries occur when people inside buildings attempt to move to a different location inside the building or try to leave.</p></li>
+							<li><p>DO NOT use elevators.</p></li>
+							<li><p>Be aware that the electricity may go out or the sprinkler systems or fire alarms may turn on.</p></li>
+						</ol>
+					</section>
+					<section id="outdoors">
+						<h4>If Outdoors</h4>
+						<ol class="helpList outdoors">
+							<li><p>Stay There.</p></li>
+							<li><p>Move away from buildings, streetlights, and utility wires.</p></li>
+							<li><p>Once in the open, stay there until the shaking stops. The greatest danger exists directly outside buildings, at exits and alongside exterior walls. Many of the 120 fatalities from the 1933 Long Beach earthquake occurred when people ran outside of buildings only to be killed by falling debris from collapsing walls. Ground movement during an earthquake is seldom the direct cause of death or injury. Most earthquake-related casualties result from collapsing walls, flying glass, and falling objects.</p></li>
+						</ol>
+					</section>
+					<section id="moving-vehicle">
+						<h4>If In A Moving Vehicle</h4>
+						<ol class="helpList movingVehicle">
+							<li><p>Stop as quickly as safety permits and stay in the vehicle. Avoid stopping near or under buildings, trees, overpasses, and utility wires.</p></li>
+							<li><p>Proceed cautiously once the earthquake has stopped. Avoid roads, bridges, or ramps that might have been damaged by the earthquake.</p></li>
+						</ol>
+					</section>
+					<section id="debris">
+						<h4>If Trapped Under Debris</h4>
+						<ol class="helpList underDebris">
+							<li><p>Do not light a match.</p></li>
+							<li><p>Do not move about or kick up dust.</p></li>
+							<li><p>Cover your mouth with a handkerchief or clothing.</p></li>
+							<li><p>Tap on a pipe or wall so rescuers can locate you. Use a whistle if one is available. Shout only as a last resort. Shouting can cause you to inhale dangerous amounts of dust.</p></li>
+						</ol>
+					</section>
+				</article>
+				<article id="after" class="hidden">
+					<h3>After An Earthquake</h3>
+					<section id="general-info">
+						<h4>General Info</h4>
+						<ol class="helpList">
+							<li><p>When the shaking stops, look around to make sure it is safe to move. Then exit the building.</p></li>
+							<li><p>Expect aftershocks. These secondary shockwaves are usually less violent than the main quake but can be strong enough to do additional damage to weakened structures and can occur in the first hours, days, weeks, or even months after the quake.</p></li>
+							<li><p>Help injured or trapped persons. Remember to help your neighbors who may require special assistance such as infants, the elderly and people with access and functional needs. Give first aid where appropriate. Do not move seriously injured persons unless they are in immediate danger of further injury. Call for help.</p></li>
+							<li><p>Look for and extinguish small fires. Fire is the most common hazard after an earthquake.</p></li>
+							<li><p>Listen to a battery-operated radio or television for the latest emergency information.</p></li>
+							<li><p>Be aware of possible tsunamis if you live in coastal areas. These are also known as seismic sea waves (mistakenly called "tidal waves"). When local authorities issue a tsunami warning, assume that a series of dangerous waves is on the way. Stay away from the beach.</p></li>
+							<li><p>Use the telephone only for emergency calls.</p></li>
+							<li><p>Go to a designated public shelter if your home had been damaged and is no longer safe. Text SHELTER + your ZIP code to 43362 (4FEMA) to find the nearest shelter in your area (example: shelter 12345).</p></li>
+							<li><p>Stay away from damaged areas. Stay away unless your assistance has been specifically requested by police, fire, or relief organizations. Return home only when authorities say it is safe.</p></li>
+							<li><p>Be careful when driving after an earthquake and anticipate traffic light outages.</p></li>
+							<li><p>After it is determined that its’ safe to return, your safety should be your primary priority as you begin clean up and recovery.</p></li>
+							<li><p>Open cabinets cautiously. Beware of objects that can fall off shelves.</p></li>
+							<li><p>Find out how to keep food safe during and after an emergency by visiting <a href="http://www.foodsafety.gov/keep/emergency/index.html" target="_blank">this page.</a></p></li>
+							<li><p>Put on long pants, a long-sleeved shirt, sturdy shoes and work gloves to protect against injury from broken objects.</p></li>
+							<li><p>Clean up spilled medicines, bleaches, gasoline or other flammable liquids immediately. Leave the area if you smell gas or fumes from other chemicals.</p></li>
+							<li><p>Inspect the entire length of chimneys for damage. Unnoticed damage could lead to a fire.</p></li>
+						</ol>
+					</section>
+					<section id="inspect-utilities">
+						<h4>Inspect Utilities</h4>
+						<ol class="helpList">
+							<li><p>Check for gas leaks. If you smell gas or hear blowing or hissing noise, open a window and quickly leave the building. Turn off the gas at the outside main valve if you can and call the gas company from a neighbor's home. If you turn off the gas for any reason, it must be turned back on by a professional.</p></li>
+							<li><p>Look for electrical system damage. If you see sparks or broken or frayed wires, or if you smell hot insulation, turn off the electricity at the main fuse box or circuit breaker. If you have to step in water to get to the fuse box or circuit breaker, call an electrician first for advice.</p></li>
+							<li><p>Check for sewage and water lines damage. If you suspect sewage lines are damaged, avoid using the toilets and call a plumber. If water pipes are damaged, contact the water company and avoid using water from the tap. You can obtain safe water by melting ice cubes.</p></li>
+						</ol>
+					</section>
+				</article>
+				<article id="more-info" class="hidden">
+					<section id="fema-publications">
+						<h4>FEMA Publications</h4>
+						<p>If you require more information about any of these topics, the following resources may be helpful.</p>
+						<ol class="helpList">
+							<li><p><a href="https://www.fema.gov/media-library/assets/documents/3234" target="_blank">Earthquake Safety Checklist</a>. Safety tips for before, during and after an earthquake.</p></li>
+							<li><p><a href="http://www.fema.gov/library/viewRecord.do?id=1520" target="_blank">Earthquake Preparedness: What Every Childcare Provider Should Know</a>. FEMA 240. Publication form teachers and for presentation to children.</p></li>
+							<li><p>How to Guides to Protect Your Property or Business from Earthquakes. Available online <a href="http://www.fema.gov/library/viewRecord.do?id=3260" target="_blank">here</a>.</p></li>
+						</ol>
+					</section>
+					<section id="related-websites">
+						<h4>Related Websites</h4>
+						<p>Find additional information on how to plan and prepare for an earthquake and learn about available resources by visiting the following websites:</p>
+						<ol class="helpList">
+							<li><p><a href="http://www.fema.gov/" target="_blank">Federal Emergency Management Agency</a></p></li>
+							<li><p><a href="http://www.redcross.org/find-help/disaster-recovery" target="_blank">American Red Cross</a></p></li>
+							<li><p><a href="http://www.shakeout.org/" target="_blank">The ShakeOut</a></p></li>
+							<li><p><a href="http://earthquake.usgs.gov/" target="_blank">U.S. Geological Survey Earthquake Hazards Program</a></p></li>
+							<li><p><a href="http://www.earthquakecountry.info" target="_blank">Earthquake Country Alliance</a></p></li>
+						</ol>
+					</section>
+					<section id="moreinfo">
+						<h4>Listen To Local Officials</h4>
+						<p>Learn about the emergency plans that have been established in your area by your state and local government. In any emergency, always listen to the instructions given by local emergency management officials.</p>
+					</section>
+				</article>
+			</div>
+			<!-- END INFO -->
+			<!-- BEGIN SETTINGS -->
+			<div id="settings-container" class="container hidden">
+				<form id="user-settings">
+					<fieldset>
+						<h6>Magnitude Range: </h6>
+						<ul id="magnitude_range">
+							<li>
+								<label for="low_mag">Low: </label>
+								<select name="low_mag" id="low_mag">
+									<option value="0" selected="selected">Choose One</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</li>
+							<li>
+								<label for="high_mag">High: </label>
+								<select name="high_mag" id="high_mag">
+									<option value="0" selected="selected">Choose One</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select>
+							</li>
+						</ul>
+					</fieldset>
+					<fieldset>
+						<h6>Time Filter</h6>
+						<ul>
+							<li>
+								<label for="time_range">Show quakes in the last: </label>
+								<select name="time_range" id="time_range">
+									<option value="0">Choose One</option>
+									<option value="days">Day</option>
+									<option value="weeks">Week</option>
+									<option value="months">Month</option>
+								</select>
+							</li>
+						</ul>
+					</fieldset>
+					<fieldset>
+						<h6>Quantity</h6>
+						<ul>
+							<li>
+								<label for="quantity">Show me <select id="quantity">
+									<option value="250">250</option>
+									<option value="500">500</option>
+									<option value="1500">1500</option>
+									<option value="5000">5000</option>
+								</select>
+								 earthquakes.
+								</label>
+							</li>
+							<li><p class="small italic">note: increasing the quantity may affect performance.</p></li>
+						</ul>
+					</fieldset>
+					<fieldset>
+						<ul>
+							<li>
+								<button data-method="clear">Reset</button>
+								<button data-method="submit">Submit</button>
+							</li>
+						</ul>
+					</fieldset>
+				</form>
+			</div>
+			<!-- END SETTINGS -->
+		</main>
+		<script src="js/min/app-min.js"></script>
+		<!-- Google Analytics -->
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-38795938-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+		<!-- End Google Analytics -->
+	</body>
+</html>

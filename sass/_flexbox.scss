@@ -1,0 +1,75 @@
+@mixin alignItems($alignment) {
+	@include align-items($alignment);
+}
+
+@mixin alignContent($alignment) {
+	@include align-content($alignment);
+}
+
+@mixin justifyContent($justification) {
+	@include justify-content($justification);
+}
+
+@mixin order($int) {
+	@include order($int);
+}
+
+%flexbox {
+	@include display-flex;
+}
+
+%flexRowWrap {
+	@extend %flexbox;
+	@include flex-flow(row wrap);
+}
+
+%flexRowNoWrap {
+	@extend %flexbox;
+	@include flex-flow(row nowrap);
+}
+
+%flexColumnWrap {
+	@extend %flexbox;
+	@include flex-flow(column wrap);
+}
+
+%flexColumnNoWrap {
+	@extend %flexbox;
+	@include flex-flow(column nowrap);
+}
+
+%flexRow {
+	@extend %flexbox;
+	@include flex-direction(row); 
+}
+
+%flexColumn {
+	@extend %flexbox;
+	@include flex-direction(column);
+}
+
+%flexWrap {
+	@extend %flexbox;
+	@include flex-wrap(wrap);
+}
+
+%flexNoWrap {
+	@extend %flexbox;
+	@include flex-wrap(nowrap);
+}
+
+%spaceAround {
+	@include justify-content(space-around);
+}
+
+%spaceBetween {
+	@include justify-content(space-between);
+}
+
+%verticalFill {
+	@include align-items(stretch);
+}
+
+%verticalCenter {
+	@include align-items(center);
+}

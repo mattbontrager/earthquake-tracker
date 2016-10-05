@@ -1,0 +1,40 @@
+# pre-production directories
+bower_components
+
+# compiling tools
+*.codekit
+
+# directories to exclude
+promo
+
+
+#text editors
+*.esproj
+*.sublime-project
+*.sublime-workspace
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+### SASS Ignores - "Sassy CSS" http://sass-lang.com/
+*.sass-cache
+
+# ignores any hidden subversion files if previous vcs was SVN
+.svn
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
